@@ -264,7 +264,6 @@ temp+=
      `Question ${(index + 1)}:\n\n${x.question}\n\nA.${x.options[0]}\nB.${x.options[1]}\nC.${x.options[2]}\nD.${x.options[3]}--------------------\n\n`
 });
 questionText.textContent = temp;
-     startScreen.classList.add("hidden")
      questionModal.classList.remove("hidden");
      questionModal.addEventListener("click", function(event){
           if(event.target===questionModal||event.target===closeModal){
