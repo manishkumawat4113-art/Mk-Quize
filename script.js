@@ -30,11 +30,14 @@ let questionTasks=JSON.parse(localStorage.getItem("tom"))||[]
 const questionModal = document.querySelector("#questionModal");
 const questionText = document.querySelector("#questionText");
 const closeModal = document.querySelector("#closeModal");
+const timer =document.querySelector("#timer");
 let currentNumber=0
 let selectedAnswer=null
 let totalScore=0
+let timeLeft = 15
+let timerId = null
 let mk=false
-let /*questions*/normalQuestions = [
+let normalQuestions = [
 {question:"Which language is mainly used to make web pages interactive?",
      options: ["HTML","CSS","JavaScript","SQL"],
      answer: "JavaScript"
@@ -85,6 +88,7 @@ let /*questions*/normalQuestions = [
 totalQuestions.textContent=normalQuestions.length
 
 function showQuestion(){
+     clearInterval(timerId);
     nextBtn.disabled=true
     selectedAnswer = null;
     questionNumber.textContent=currentNumber+1
@@ -127,6 +131,38 @@ function selectAnswer(selectedButton,answer){
         );
     }
     nextBtn.disabled = false;
+     clearInterval(timerId);
+}
+function startTimer() {
+    timeLeft = 15;
+    updateTimer();
+    timerId = setInterval( function () {
+                timeLeft--;
+                updateTimer();
+ if (timeLeft <= 0) {
+ clearInterval(timerId);
+                  timeUp();
+                }
+            },  1000 );
+}
+function updateTimer() {
+    timer.textContent =
+        `⏱️ ${timeLeft}`;
+}
+function timeUp() {
+    if (selectedAnswer !== null) {
+        return;
+    }
+    selectedAnswer = "TIME_UP";
+    const currentQuestion = questions[currentQuestionIndex];
+   const allOptions =document.querySelectorAll( ".option"  );
+  allOptions.forEach(function (button) {
+       button.disabled = true;
+ if (button.textContent ===currentQuestion.answer ) {
+  button.classList.add( "correct" );
+ }
+}      );
+    nextBtn.disabled = false;
 }
 function nextQuestion(){
      if (selectedAnswer === null) {
@@ -141,6 +177,7 @@ function nextQuestion(){
     showQuestion()
 }
 function finishQuiz(){
+     clearInterval(timerId);
       const currentQuestions = mk ? questionTasks : normalQuestions;
     quizScreen.classList.add("hidden")
         resultScreen.classList.remove("hidden")
