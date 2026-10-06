@@ -27,6 +27,9 @@ const startBtn1 =document.querySelector("#startBtn1");
 const leavebtn =document.querySelector("#leavebtn");
 const watchbtn =document.querySelector(".delBtn");
 let questionTasks=JSON.parse(localStorage.getItem("tom"))||[]
+const questionModal = document.querySelector("#questionModal");
+const questionText = document.querySelector("#questionText");
+const closeModal = document.querySelector("#closeModal");
 let currentNumber=0
 let selectedAnswer=null
 let totalScore=0
@@ -259,17 +262,14 @@ function watchBtn(){
     const currentQuestions=mk?questionTasks:normalQuestions
 currentQuestions.forEach(function(x, index){
 temp+=
-   /* alert(
-        "Question " + (index + 1) + ":\n\n" +
-        x.question + "\n\n" +
-        "A. " + x.options[0] + "\n" +
-        "B. " + x.options[1] + "\n" +
-        "C. " + x.options[2] + "\n" +
-        "D. " + x.options[3] + "\n\n" +
-        "Answer: " + x.answer
-    );*/
      `Question ${(index + 1)}:\n\n${x.question}\n\nA.${x.options[0]}\nB.${x.options[1]}\nC.${x.options[2]}\nD.${x.options[3]}--------------------\n\n`
 });
-alert(temp)
+questionText.textContent = temp;
+     questionModal.classList.remove("hidden");
+     questionModal.addEventListener("click", function(event){
+          if(event.target===questionModal||event.target===closeModal){
+          questionModal.classList.add("hidden");
+    }
+});
 }
 showHighScore()
