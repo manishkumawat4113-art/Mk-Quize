@@ -256,7 +256,6 @@ watchbtn.addEventListener("click",function(){
      mk=true
      watchBtn()
 })
-
 function watchBtn(){
      let temp=""
     const currentQuestions=mk?questionTasks:normalQuestions
