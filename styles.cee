@@ -1,0 +1,546 @@
+/* ==========================================
+   1. RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   2. VARIABLES
+========================================== */
+
+:root {
+    --bg: #f3f4f6;
+    --card: #ffffff;
+    --text: #222222;
+    --muted: #6b7280;
+    --border: #dddddd;
+    --primary: #2563eb;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+
+/* ==========================================
+   3. BODY
+========================================== */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family: Arial, sans-serif;
+
+    transition:
+        background 0.3s,
+        color 0.3s;
+}
+
+
+/* ==========================================
+   4. APP
+========================================== */
+
+.app {
+    width: 100%;
+
+    max-width: 650px;
+
+    padding: 30px;
+
+    background: var(--card);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px var(--shadow);
+}
+
+
+/* ==========================================
+   5. SCREEN
+========================================== */
+
+.screen {
+    width: 100%;
+}
+
+
+/* ==========================================
+   6. HIDDEN
+========================================== */
+
+.hidden {
+    display: none;
+}
+
+
+/* ==========================================
+   7. START SCREEN
+========================================== */
+
+#startScreen {
+    text-align: center;
+}
+
+
+#startScreen h1 {
+    margin-bottom: 12px;
+
+    font-size: 32px;
+}
+
+
+#startScreen p {
+    margin-bottom: 25px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   8. GENERAL BUTTON
+========================================== */
+
+button {
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition:
+        transform 0.1s,
+        opacity 0.2s,
+        background 0.2s;
+}
+
+
+button:hover {
+    opacity: 0.9;
+}
+
+
+button:active {
+    transform: scale(0.96);
+}
+
+
+button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.5;
+}
+
+
+/* ==========================================
+   9. START BUTTON
+========================================== */
+
+#startBtn,#fillBtn,#startBtn1,#leavebtn,
+#delBtn,#delBtn1,#delBtn2{
+    
+    padding: 13px 25px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 16px;
+}
+#fillBtn{
+    margin:10px;
+}
+#startBtn1,#delBtn1{
+    margin:10px;
+    margin-left: 80px;
+}
+#delBtn,#delBtn2{
+    margin:10px;
+    margin-left:65px;
+}
+#startBtn1,#delBtn1{
+background: gold;
+    color: black;
+}
+#delBtn2{
+    margin-left: 50px;
+}
+#delBtn1{
+    margin-left: 10px;
+}
+/* ==========================================
+   10. QUIZ TOP
+========================================== */
+
+.quiz-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    font-size: 14px;
+}
+
+
+#timer {
+    padding: 7px 12px;
+
+    border-radius: 8px;
+
+    background: var(--border);
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   11. PROGRESS CONTAINER
+========================================== */
+
+.progress-container {
+    width: 100%;
+
+    height: 8px;
+
+    margin-bottom: 30px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: var(--border);
+}
+
+
+/* ==========================================
+   12. PROGRESS BAR
+========================================== */
+
+.progress-bar {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background: var(--primary);
+
+    transition: width 0.3s ease;
+}
+
+
+/* ==========================================
+   13. QUESTION
+========================================== */
+
+#question {
+    margin-bottom: 25px;
+
+    line-height: 1.4;
+
+    font-size: 23px;
+}
+
+
+/* ==========================================
+   14. OPTIONS
+========================================== */
+
+#optionsContainer {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   15. OPTION BUTTON
+========================================== */
+
+.option {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 2px solid var(--border);
+
+    border-radius: 10px;
+
+    background: var(--card);
+
+    color: var(--text);
+
+    text-align: left;
+
+    font-size: 15px;
+}
+
+
+.option:hover {
+    border-color: var(--primary);
+}
+
+
+/* ==========================================
+   16. SELECTED OPTION
+========================================== */
+
+.option.selected {
+    border-color: var(--primary);
+
+    background: rgba(37, 99, 235, 0.1);
+}
+
+
+/* ==========================================
+   17. CORRECT ANSWER
+========================================== */
+
+.option.correct {
+    border-color: var(--success);
+
+    background: rgba(22, 163, 74, 0.12);
+}
+
+
+/* ==========================================
+   18. WRONG ANSWER
+========================================== */
+
+.option.wrong {
+    border-color: var(--danger);
+
+    background: rgba(220, 38, 38, 0.12);
+}
+
+
+/* ==========================================
+   19. NEXT BUTTON
+========================================== */
+
+#nextBtn {
+    width: 100%;
+
+    padding: 13px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   20. RESULT SCREEN
+========================================== */
+
+#resultScreen {
+    text-align: center;
+}
+
+
+#resultScreen h1 {
+    margin-bottom: 25px;
+
+    font-size: 30px;
+}
+
+
+/* ==========================================
+   21. RESULT BOX
+========================================== */
+
+.result-box {
+    margin-bottom: 25px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    background: var(--bg);
+}
+
+
+.result-box p {
+    margin-bottom: 10px;
+
+    color: var(--muted);
+}
+
+
+#score {
+    margin-bottom: 15px;
+
+    font-size: 40px;
+
+    color: var(--primary);
+}
+
+
+#percentage {
+    color: var(--primary);
+}
+
+
+#highScore {
+    color: var(--success);
+}
+
+
+/* ==========================================
+   22. RESTART BUTTON
+========================================== */
+
+#restartBtn {
+    padding: 13px 25px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   23. DARK MODE
+========================================== */
+
+body.dark {
+    --bg: #111827;
+    --card: #1f2937;
+    --text: #f9fafb;
+    --muted: #9ca3af;
+    --border: #374151;
+}
+
+
+/* ==========================================
+   24. MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 12px;
+    }
+
+
+    .app {
+        padding: 20px;
+
+        border-radius: 15px;
+    }
+
+
+    #startScreen h1 {
+        font-size: 27px;
+    }
+
+
+    #question {
+        font-size: 20px;
+    }
+
+
+    .option {
+        padding: 13px;
+    }
+
+
+    #score {
+        font-size: 34px;
+    }
+
+}
+.question-form {
+    width: 100%;
+    max-width: 500px;
+
+    margin: auto;
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.question-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question-form input,
+.question-form select {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.question-form input:focus,
+.question-form select:focus {
+    border-color: #2563eb;
+}
+
+#addQuestionBtn {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+#addQuestionBtn:hover {
+    opacity: 0.9;
+      }
